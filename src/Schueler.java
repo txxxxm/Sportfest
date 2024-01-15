@@ -1,44 +1,26 @@
 public class Schueler {
     String name;
     String nachname;
-
+String Sport;
     Schueler nachfolger;
 
-    public Schueler(String pname, String pnachname)
+    public Schueler(String pname, String pnachname, String pSport)
     {
         name=pname;
         nachname=pnachname;
+        Sport=pSport;
 
     }
     public void setName(String pname){
         name=pname;
     }
-    public String getName(){
-        return name;
-    }
+    public void setSport(String pSport){Sport=pSport;}
     public void setNachname(String pnachname){
         nachname=pnachname;
     }
-    public String getNachname(){
-        return nachname;
-    }
-    public void setNachfolger(Schueler pnachfolger){
-        if(nachfolger==null){
-            nachfolger=pnachfolger;
-        }
-        else{
-
-
-        }
-    }
-    public Schueler getNachfolger(){
-        return nachfolger;
-    }
-    public String toString() {
-        return "" + name + "," + nachname;
-    }
-    public String getFullName() {
-        return name + " " + nachname;
+    public String toString() {return "" + name + "," + nachname;}
+    public String getAlles() {
+        return name + " " + nachname+" "+Sport;
     }
 }
 
