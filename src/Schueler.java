@@ -1,16 +1,25 @@
 public class Schueler {
     String name;
     String nachname;
-String Sport;
+    String Sport;
     Schueler nachfolger;
-
-    public Schueler(String pname, String pnachname, String pSport)
+    Double zeit;
+    public Schueler(String pname, String pnachname, String pSport, Double pzeit)
     {
+        zeit=pzeit;
         name=pname;
         nachname=pnachname;
         Sport=pSport;
 
     }
+    public void setZeit(Double pzeit){
+        zeit=pzeit;
+    }
+
+    public Double getZeit() {
+        return zeit;
+    }
+
     public void setName(String pname){
         name=pname;
     }

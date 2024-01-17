@@ -1,9 +1,11 @@
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SportfestGUI {
     Schueler erster=null;
+
     List<Schueler> Liste = new List<>();
     Schueler s;
     private JPanel Mainpanell;
@@ -15,26 +17,36 @@ public class SportfestGUI {
     private JLabel Label3;
     private JTextArea Listegrafik;
     private JButton Delete;
-    private JTextField Sportfeld;
+    private JTextField Zeitfeld;
     private JLabel label4;
-
+    double zeit;
+    double zeit2;
+    int i = 0;
 
     public SportfestGUI() {
         Abutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                s = new Schueler(Vorname.getText(), Nachname.getText(), Sportfeld.getText());
-                if (Liste.isEmpty()) {
-                    erster = s;
-                    Liste.append(s);
-                } else {
-                    Liste.append(s);
-                }
-                updateList();
-                Vorname.setText("");
-                Nachname.setText("");
-                Sportfeld.setText("");
+                // Check if Zeitfeld is not empty
+                if (!Zeitfeld.getText().isEmpty()) {
+                    zeit = Double.valueOf(Zeitfeld.getText());
+                    s = new Schueler(Vorname.getText(), Nachname.getText(), Zeitfeld.getText(), zeit);
 
+                    if (Liste.isEmpty()) {
+                        Liste.append(s);
+                    } else {
+                        Liste.toFirst();
+                        while (Liste.hasAccess() && zeit >= Liste.getContent().getZeit()) {
+                            Liste.next();
+                        }
+                        Liste.insert(s);
+                    }
+
+                    updateList();
+                    Vorname.setText("");
+                    Nachname.setText("");
+                    Zeitfeld.setText("");
+                }
             }
 
         });
@@ -60,8 +72,10 @@ public class SportfestGUI {
 
         Liste.toFirst();
         while (Liste.hasAccess()) {
+
             Listegrafik.append(Liste.getContent().getAlles() + "\n");
             Liste.next();
+
         }
     }
     private void deleteLastObject() {
@@ -71,6 +85,5 @@ public class SportfestGUI {
             updateList();
         }
     }
-
 
 }
