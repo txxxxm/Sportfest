@@ -27,9 +27,18 @@ public class Schueler {
     public void setNachname(String pnachname){
         nachname=pnachname;
     }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public String toString() {return "" + name + "," + nachname;}
     public String getAlles() {
-        return name + " " + nachname+" "+Sport;
+        return name + ", " + nachname+": "+Sport;
     }
 }
 
